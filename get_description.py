@@ -1,5 +1,5 @@
 import sys
-import requests
+import urllib.request
 from bs4 import BeautifulSoup
 import csv 
 import re
@@ -20,11 +20,12 @@ writer.writerow(['url', 'name', 'price', 'quantity_box', 'quantity_carton', 'col
 # Data from stdin
 for url in sys.stdin:
     url = url.strip() # To remove \n character at the end of url string
-    resp = requests.get(url)
 
-    if resp.status_code == 200:
-        # Parse of html file
-        content = BeautifulSoup(resp.content, 'html.parser')
+    try:
+        # Fetch the URL content
+        with urllib.request.urlopen(url) as response:
+            resp_content = response.read()
+        content = BeautifulSoup(resp_content, 'html.parser')
 
         # All parameters for each product
         package_info = {
@@ -102,5 +103,5 @@ for url in sys.stdin:
             package_info['material'],
             package_info['dipping']
         ])
-    else:
-        print('Failed to retrieve the data')
+    except Exception as e:
+        print(f'Failed to retrieve the data for {url}: {e}')
