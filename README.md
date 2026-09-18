@@ -1,10 +1,21 @@
-# UPA project
+# UPA - The implementation of 3 separate projects
 
-## Optional creation of enviroment
-Maybe create separate enviroment for this project but it depends on you:  
-**python3 -m venv myenv**  
-**source myenv/bin/activate** # For Linux/Mac  
-**myenv\Scripts\activate** # For Windows 
+## Overview
+This repository contains code of implemantation for each separate project in subject UPA
 
-## How to run the get_urls.py
-**pip install -r requirements.txt**
+## Folder structure
+```
+project/
+├── projekt_1/
+├── projekt_2/
+└── projekt_3/
+```
+
+## projekt_1/
+Includes implementation of scraping data from web e-shop to extract data. These data were analysed furthermore in **projekt_3/**. 
+
+## projekt_2/
+In this part of the project was the main goal to learn about various NoSQL databases and write down the report.
+
+## projekt_3/
+From the data extracted from **projekt_1/** we analysed them and explored their characteristics.
